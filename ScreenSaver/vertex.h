@@ -49,6 +49,8 @@ public:
     void setdirectY2(float dX);
     void setIndexX(float dX, float index);
     void setIndexY(float dY, float index);
+    void setIndexDX(float dX, float index);
+    void setIndexYX(float dY, float index);
     
     
     
