@@ -15,14 +15,24 @@
 
 
 
-vertex::vertex(float xC, float yC, float dX, float dY){	//constructor
+vertex::vertex(float xC, float yC, float dX, float dY, float mode){	//constructor
+   
+    if (mode != 3) {
     x = xC;
     y = yC;
     directX = dX;
     directY = dY;
+    } else if (mode == 3) {
+        
+        polyX.push_back(xC);
+        polyY.push_back(yC);
 
+        
+    }
     
 }
+
+
 
 
 
@@ -74,15 +84,60 @@ float vertex::getdirectY2() {
     
 }
 
-
-
-
-void vertex::setX(float xC) {
-    x = xC;
+float vertex::polyXSize(){
+    
+    return (polyX.size());
 }
 
-void vertex::setY(float yC) {
-    y = yC;
+float vertex::polyYSize(){
+    
+    return (polyY.size());
+}
+
+float vertex::retPolyXind(float index) {
+    
+    return(polyX[index]);
+}
+
+float vertex::retPolyYind(float index) {
+    
+    return(polyY[index]);
+}
+
+float vertex::retPolyXD(float index) {
+    
+    return(dirX[index]);
+}
+
+float vertex::retPolyYD(float index) {
+
+    return(dirY[index]);
+}
+
+
+
+void vertex::setX(float xC, float mode) {
+    
+    if (mode != 3) {
+        x = xC;
+    } else if (mode == 3) {
+        polyX.push_back(xC);
+        
+    }
+    
+    
+
+}
+
+void vertex::setY(float yC, float mode) {
+   
+    if (mode != 3) {
+        y = yC;
+    } else if (mode == 3) {
+        polyY.push_back(yC);
+        
+    }
+
 }
 
 void vertex::setX2(float xC) {
@@ -94,12 +149,36 @@ void vertex::setY2(float yC) {
 }
 
 
-void vertex::setdirectX(float dX){
-    directX = dX;
+
+void vertex::setIndexX(float dX, float index){
+    polyX[index] = dX;
+    
 }
 
-void vertex::setdirectY(float dY){
-    directY = dY;
+
+void vertex::setIndexY(float dY, float index){
+    polyY[index] = dY;
+}
+
+
+
+
+
+void vertex::setdirectX(float dX, float mode){
+    
+    if (mode != 3) {
+        directX = dX;
+    } else if (mode == 3) {
+        dirX.push_back(dX);
+    }
+}
+
+void vertex::setdirectY(float dY, float mode){
+    if (mode != 3){
+        directY = dY;
+    } else if (mode == 3) {
+        dirY.push_back(dY);
+    }
 }
 
 void vertex::setdirectX2(float dX) {
@@ -114,5 +193,8 @@ void vertex::setdirectY2(float dY) {
 void vertex::setActive(float a){
     active = a;
 }
+
+
+
 
 
